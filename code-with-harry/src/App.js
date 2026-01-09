@@ -17,27 +17,27 @@ function App() {
     }, 1500);
   };
 
-  const toggleMode = () => {
-    if (mode === 'light') {
-      setMode('dark');
-      document.body.style.backgroundColor = '#343a40';
-      showAlert('Dark Mode has been enabled', 'success');
+  const toggleMode = (colorMode) => {
+    if (typeof colorMode === 'string' && colorMode) {
+      setMode(colorMode);
+      // showAlert(`${colorMode.charAt(0).toUpperCase() + colorMode.slice(1)} Mode has been enabled`, 'success');
     } else {
-      setMode('light');
-      document.body.style.backgroundColor = 'white';
-      showAlert('Light Mode has been enabled', 'success');
+      // Toggle between light and dark
+      const newMode = mode === 'light' ? 'dark' : 'light';
+      setMode(newMode);
+      // showAlert(`${newMode.charAt(0).toUpperCase() + newMode.slice(1)} Mode has been enabled`, 'success');
     }
   };
 
   return (
-    <>
+    <div className={mode}>
       <Navbar theme={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
       <div className="container">
         <TextBox showAlert={showAlert} theme={mode} />
         {/* <About theme={mode} /> */}
       </div>
-    </>
+    </div>
   );
 }
 
