@@ -7,11 +7,13 @@ export default function TextBox(props) {
   const handleUpClick = () => {
     let upText = text.toUpperCase();
     setText(upText);
+    props.showAlert("Converted to uppercase", "success");
   };
 
   const handleLowClick = () => {
     let lowText = text.toLowerCase();
     setText(lowText);
+    props.showAlert("Converted to lowercase", "success");
   };
 
   return (
