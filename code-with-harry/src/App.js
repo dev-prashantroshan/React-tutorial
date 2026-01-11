@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-// import About from './components/pages/About';
+import About from './components/pages/About';
 import Navbar from './components/primary/Navbar';
 import TextBox from './components/text/TextBox';
 import Alert from './components/primary/Alert';
+import Home from './components/pages/Home';
+import { Routes, Route } from 'react-router-dom';
+import Calculator from './components/pages/projects/Calculator';
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -34,8 +37,12 @@ function App() {
       <Navbar theme={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
       <div className="container">
-        <TextBox showAlert={showAlert} theme={mode} />
-        {/* <About theme={mode} /> */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About theme={mode} />} />
+          <Route path="/projects/textBox" element={<TextBox showAlert={showAlert} theme={mode} />} />
+          <Route path="/projects/calculator" element={<Calculator showAlert={showAlert} theme={mode} />} />
+        </Routes>
       </div>
     </div>
   );
