@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export class NewsItem extends Component {
-  render() {
-    let { title, description, imgUrl, newsUrl } = this.props;
-
-    return (
-      <div className="card" style={{ width: '18rem' }}>
-        <img src={imgUrl} className="card-img-top" alt="..." />
-        <div className="card-body">
-          <h5 className="card-title">{title}...</h5>
-          <p className="card-text">{description}...</p>
-          <a rel="noreferrer" href={newsUrl} target="_blank" className="btn-sm btn-primary">
-            Read More
-          </a>
-        </div>
+const NewsItem = (props) => {
+  return (
+    <div className="card" style={{ width: '18rem' }}>
+      <img src={props.imgUrl} className="card-img-top" alt="..." />
+      <div className="card-body">
+        <h5 className="card-title">{props.title}...</h5>
+        <p className="card-text">{props.description}...</p>
+        <a rel="noreferrer" href={props.newsUrl} target="_blank" className="btn-sm btn-primary">
+          Read More
+        </a>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default NewsItem;
